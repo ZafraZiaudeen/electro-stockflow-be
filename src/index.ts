@@ -1,7 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import connectDB from "./infrastructure/db";
-
+import categoryRouter from "./api/category";
 import cors from "cors";
 import globalErrorHandlingMiddleware from "./api/middlewares/global-error-handling-middleware";
 
@@ -13,10 +13,7 @@ app.use(cors());
 
 connectDB();
 
-// app.use((req, res, next) => {
-//   console.log("Hello World");
-//   next();
-// });
+app.use("/api/category", categoryRouter);
 
 app.use(globalErrorHandlingMiddleware);
 
