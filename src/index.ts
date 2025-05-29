@@ -2,12 +2,16 @@ import "dotenv/config";
 import express from "express";
 import connectDB from "./infrastructure/db";
 import categoryRouter from "./api/category";
+import { clerkMiddleware } from "@clerk/express";
+
 import cors from "cors";
 import globalErrorHandlingMiddleware from "./api/middlewares/global-error-handling-middleware";
 
 // Create an Express instance
 const app = express();
-// Middleware to parse JSON data in the request body
+
+app.use(clerkMiddleware());
+// Middleware to parse the JSON data in the request body
 app.use(express.json());
 app.use(cors());
 
