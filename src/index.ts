@@ -1,7 +1,6 @@
 import "dotenv/config";
 import express from "express";
 import connectDB from "./infrastructure/db";
-import categoryRouter from "./api/category";
 import { clerkMiddleware } from "@clerk/express";
 
 import cors from "cors";
@@ -17,7 +16,6 @@ app.use(cors());
 
 connectDB();
 
-app.use("/api/category", categoryRouter);
 
 app.use(globalErrorHandlingMiddleware);
 
