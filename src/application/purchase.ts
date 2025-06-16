@@ -114,3 +114,20 @@ export const updatePurchaseEntry = async (
     next(error);
   }
 };
+export const getPurchaseEntryByPartNumber = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const partNumber = req.params.partNumber;
+    const entry = await PurchaseEntry.findOne({ "items.partNumber": partNumber });
+    if (!entry) {
+      throw new NotFoundError("No purchase entry found for the given part number");
+    }
+    res.status(200).json(entry);
+    return;
+  } catch (error) {
+    next(error);
+  }
+};
