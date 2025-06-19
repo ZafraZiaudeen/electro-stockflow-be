@@ -4,8 +4,8 @@ export const CreatePurchaseEntryDTO = z.object({
   poNumber: z.string(),
   purchaseDate: z
     .string()
-    .transform((val) => new Date(val)) // Transform string to Date
-    .refine((val) => !isNaN(val.getTime()), { message: "Invalid date format" }) // Validate Date
+    .transform((val) => new Date(val)) 
+    .refine((val) => !isNaN(val.getTime()), { message: "Invalid date format" })
     .optional(),
   grn: z.string(),
   totalValue: z.number().default(0.00),

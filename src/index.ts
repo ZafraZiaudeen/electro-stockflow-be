@@ -5,6 +5,7 @@ import connectDB from "./infrastructure/db";
 import purchaseRouter from "./api/purchase";
 import cors from "cors";
 import globalErrorHandlingMiddleware from "./api/middlewares/global-error-handling-middleware";
+import projectsRouter from "./api/project";
 
 // Create an Express instance
 const app = express();
@@ -16,6 +17,7 @@ app.use(cors());
 connectDB();
 
 app.use("/api/purchase-entries",purchaseRouter);
+app.use("/api/projects",projectsRouter);
 
 app.use(globalErrorHandlingMiddleware);
 
