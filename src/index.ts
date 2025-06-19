@@ -8,6 +8,7 @@ import projectRouter from "./api/project";
 import openingStockRouter from "./api/openingStock";
 import cors from "cors";
 import globalErrorHandlingMiddleware from "./api/middlewares/global-error-handling-middleware";
+import projectsRouter from "./api/project";
 
 // Create an Express instance
 const app = express();
