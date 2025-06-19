@@ -5,10 +5,11 @@ import connectDB from "./infrastructure/db";
 import purchaseRouter from "./api/purchase";
 import issueRouter from "./api/issue";
 import projectRouter from "./api/project";
+
 import openingStockRouter from "./api/openingStock";
 import cors from "cors";
 import globalErrorHandlingMiddleware from "./api/middlewares/global-error-handling-middleware";
-import projectsRouter from "./api/project";
+
 
 // Create an Express instance
 const app = express();
@@ -22,6 +23,7 @@ connectDB();
 app.use("/api/purchase-entries",purchaseRouter);
 app.use("/api/issues",issueRouter);
 app.use("/api/projects",projectRouter);
+
 app.use("/api/opening-stock",openingStockRouter);
 
 app.use(globalErrorHandlingMiddleware);
