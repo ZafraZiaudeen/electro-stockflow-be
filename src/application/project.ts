@@ -45,16 +45,16 @@ export const getProjectById = async (req: Request, res: Response, next: NextFunc
 
 export const updateProject = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const projectNumber = req.params.projectNumber; // Changed from projectId to projectNumber
+    const projectNumber = req.params.projectNumber; 
     const { projectName, description, status } = req.body;
     if (!projectName || !projectNumber || !description || !status) {
       throw new ValidationError("All project fields are required");
     }
 
     const updatedProject = await Project.findOneAndUpdate(
-      { projectNumber }, // Use projectNumber for lookup
-      { projectName, projectNumber, description, status }, // Update all fields
-      { new: true, runValidators: true } // Return updated document and run validators
+      { projectNumber }, 
+      { projectName, projectNumber, description, status }, 
+      { new: true, runValidators: true }
     );
     if (!updatedProject) {
       throw new NotFoundError("Project not found");

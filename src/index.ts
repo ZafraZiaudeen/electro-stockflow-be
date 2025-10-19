@@ -16,7 +16,7 @@ const app = express();
 
 // Middleware to parse the JSON data in the request body
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://elctrostockflow.netlify.app" }));
 
 connectDB();
 
@@ -29,5 +29,5 @@ app.use("/api/opening-stock",openingStockRouter);
 app.use(globalErrorHandlingMiddleware);
 
 // Define the port to run the server
-const PORT = 8000;
+const PORT =process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));

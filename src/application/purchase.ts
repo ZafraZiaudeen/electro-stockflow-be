@@ -5,8 +5,7 @@ import NotFoundError from "../domain/errors/not-found-error";
 import ValidationError from "../domain/errors/validation-error";
 import { CreatePurchaseEntryDTO } from "../domain/dto/purchase";
 import Inventory from "../infrastructure/schemas/Inventory";
-import { v4 as uuidv4 } from "uuid"; // npm install uuid
-
+import { v4 as uuidv4 } from "uuid"; 
 export const getAllPurchaseEntries = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const entries = await PurchaseEntry.find();

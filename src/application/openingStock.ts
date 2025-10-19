@@ -32,7 +32,7 @@ export const createOpeningStock = async (req: Request, res: Response, next: Next
         quantity: item.quantity,
         unit: item.unit,
         unitPrice: item.unitPrice,
-        poNumber: `OPENING-${entry._id}`, // Unique PO number for opening stock
+        poNumber: `OPENING-${entry._id}`, 
         transactionType: "opening",
       });
     }
