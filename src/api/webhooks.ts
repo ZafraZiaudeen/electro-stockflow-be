@@ -9,13 +9,14 @@ const clerkClient = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY!
  * POST /api/webhooks/clerk - Handle Clerk webhook events
  * Automatically assign "viewer" role to new users
  */
-router.post('/clerk', async (req: Request, res: Response) => {
+router.post('/clerk', async (req: Request, res: Response): Promise<void> => {
   try {
     const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
     if (!WEBHOOK_SECRET) {
       console.error('CLERK_WEBHOOK_SECRET is not set');
-      return res.status(500).json({ error: 'Webhook secret not configured' });
+      res.status(500).json({ error: 'Webhook secret not configured' });
+      return;
     }
 
     // Get headers
@@ -35,7 +36,8 @@ router.post('/clerk', async (req: Request, res: Response) => {
       });
     } catch (err) {
       console.error('Error verifying webhook:', err);
-      return res.status(400).json({ error: 'Invalid webhook signature' });
+      res.status(400).json({ error: 'Invalid webhook signature' });
+      return;
     }
 
     // Handle the event
